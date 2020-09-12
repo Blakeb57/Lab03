@@ -29,14 +29,23 @@ void NumList::insert(int num)
 
 void NumList::load_from_file(istream& ins)
 {
+	string line;
+	this->used = 0;
 
-
+	while(getline(ins, line))
+	{
+		int val = std::stoi(line);
+		this->insert(val);
+	}	
 }
 
 
 void NumList::save_to_file(ostream& outs)
 {
-
+	for(int i = 0; i < used; ++i)
+	{
+		outs << data[i] << endl;
+	}
 }
 
 void NumList::see_all()const
@@ -71,15 +80,19 @@ void NumList::b_sort()
     bool done = false;
     int j;
     int tmp;
-    while(!done){
-	done = !true;
-	for(j=used-1; j>= 0; --j){
-	    if(data[j] < data[j-1]){
-		done = false;
-		tmp = data[j];
-		data[j] = data[j-1];
-		data[j=1] = tmp;
-	    }
-	}
+    while(!done)
+	{
+		done = true;
+
+		for(j = used -1; j > 0; --j)
+		{
+	    	if(data[j] < data[j-1])
+			{
+				done = false;
+				tmp = data[j];
+				data[j] = data[j-1];
+				data[j-1] = tmp;
+	   		}
+		}
     }
 }
