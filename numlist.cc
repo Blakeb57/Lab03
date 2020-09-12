@@ -6,15 +6,19 @@
 //	Ohio University		EECS
 //**********************************************/
 #include "numlist.h"
+#include <fstream>
 using namespace std;
 
 // Constructor
-NumList::NumList(){
+NumList::NumList()
+{
 	used = 0;
 }
 
-void NumList::insert(int num){
-	if(used <CAPACITY){
+void NumList::insert(int num)
+{
+	if(used < CAPACITY)
+    {
 		data[used] = num;
 		used++;
 	}
@@ -23,31 +27,47 @@ void NumList::insert(int num){
 	}
 }
 
-void NumList::load_from_file(istream& ins){
-// The implementation of this function is left to the student
+void NumList::load_from_file(istream& ins)
+{
+
+
 }
 
 
-void NumList::save_to_file(ostream& outs){
-// The implementation of this function is left to the student
+void NumList::save_to_file(ostream& outs)
+{
+
 }
 
-void NumList::see_all()const{
-	if(used == 0)
+void NumList::see_all()const
+{
+	if(used == 0){
+
 	    cout<<"Empty list.\n";
-	else
-	    for(size_t i = 0; i<used; ++i)
-		cout<<data[i]<<endl;
+
+    }else{
+
+	    for(size_t i = 0; i<used; ++i){
+		    cout<<data[i]<<endl;
+        }
+    }
 }
 
-int NumList::get_item(size_t index)const{
-	if(index < used)
+int NumList::get_item(size_t index)const
+{
+	if(index < used){
+
 		return data[index];
-	else
+
+    }else{
+
 		return -1;
+
+    }
 }
 	
-void NumList::b_sort(){
+void NumList::b_sort()
+{
     bool done = false;
     int j;
     int tmp;
